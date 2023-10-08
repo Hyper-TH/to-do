@@ -1,57 +1,43 @@
 import './App.css';
-import { useState } from 'react';
-import { Task } from './components/Task';
+import { 
+	createBrowserRouter, 
+	createRoutesFromElements, 
+	Route, 
+	Link, 
+	Outlet, 
+	RouterProvider
+} from 'react-router-dom';
+import { Home } from './pages/Home';
+import { TaskPage } from './pages/TaskPage';
 
 function App() {
-	const [todoList, setTodoList] = useState([]);
-	const [newTask, setNewTask] = useState();
 
-	const handleChange = (event) => {
-		setNewTask(event.target.value);
-	};
-
-	const addTask = () => {
-		const task = {
-			id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
-			taskName: newTask,
-			completed: false
-		};
-
-		setTodoList([...todoList, task])
-	};
-
-
-	const deleteTask = (id) => {
-		setTodoList(todoList.filter((task) => task.id !== id));
-	};
-
-	const updateTask = (id) => {
-			setTodoList(todoList.map((task) => { return task.id === id ? {...task, completed: true} : task;
-		}));	
-	};
-
+	const router = createBrowserRouter(
+		createRoutesFromElements(
+			// Route of the routing system
+			<Route path="/" element={<Root />}>
+				<Route index element={<Home />}/>	
+				<Route path="/task" element={<TaskPage />} />
+			</Route>
+		)
+	); 
 	return (
 		<div className="App">
-			<div className="addtask">
-				<input type='text' onChange={handleChange} />
-				<button onClick={addTask}>Add Task</button>
-			</div>
-
-			<div className="list">
-				{todoList.map((task) => {
-					return (
-						<Task
-							taskName={task.taskName}
-							id={task.id}
-							completed={task.completed}
-							deleteTask={deleteTask}
-							updateTask={updateTask}
-						/>
-					);
-				})}
-			</div>
+			<RouterProvider router={router} />
 		</div>
 	);
 }
 
+const Root = () => {
+	return <>
+		<div>
+			<Link to="/"> Home </Link > 
+			<Link to="/task"> Task </Link > 
+		</div>
+
+		<div>
+			<Outlet />
+		</div>
+	</>
+}
 export default App;
