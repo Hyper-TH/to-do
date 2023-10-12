@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { TaskPage } from './pages/TaskPage';
+import { CounterPage } from './pages/CounterPage';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
 			<Route path="/" element={<Root />}>
 				<Route index element={<Home />}/>	
 				<Route path="/task" element={<TaskPage />} />
+				<Route path="/count" element={<CounterPage />} />
 			</Route>
 		)
 	); 
@@ -33,6 +35,7 @@ const Root = () => {
 		<div>
 			<Link to="/"> Home </Link > 
 			<Link to="/task"> Task </Link > 
+			<Link to="/count"> Count </Link>
 		</div>
 
 		<div>
