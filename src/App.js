@@ -10,6 +10,7 @@ import {
 import { Home } from './pages/Home';
 import { TaskPage } from './pages/TaskPage';
 import { CounterPage } from './pages/CounterPage';
+import { MedicinePage } from './pages/MedicinePage';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
 				<Route index element={<Home />}/>	
 				<Route path="/task" element={<TaskPage />} />
 				<Route path="/count" element={<CounterPage />} />
+				<Route path="/medicine" element={<MedicinePage />} />
 			</Route>
 		)
 	); 
@@ -36,6 +38,7 @@ const Root = () => {
 			<Link to="/"> Home </Link > 
 			<Link to="/task"> Task </Link > 
 			<Link to="/count"> Count </Link>
+			<Link to="/medicine"> Medicines </Link>
 		</div>
 
 		<div>
