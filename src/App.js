@@ -11,6 +11,7 @@ import { Home } from './pages/Home';
 import { TaskPage } from './pages/TaskPage';
 import { CounterPage } from './pages/CounterPage';
 import { MedicinePage } from './pages/MedicinePage';
+import { GitHubPage } from './pages/GitHubPage';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
 				<Route path="/task" element={<TaskPage />} />
 				<Route path="/count" element={<CounterPage />} />
 				<Route path="/medicine" element={<MedicinePage />} />
+				<Route path="/github" element={<GitHubPage />} />
 			</Route>
 		)
 	); 
@@ -39,6 +41,7 @@ const Root = () => {
 			<Link to="/task"> Task </Link > 
 			<Link to="/count"> Count </Link>
 			<Link to="/medicine"> Medicines </Link>
+			<Link to="/github"> GitHub </Link>
 		</div>
 
 		<div>
