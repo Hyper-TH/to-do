@@ -1,8 +1,8 @@
-export const userInfo = (props) => {
+export const UserInfo = (props) => {
     return(
         <div id='userProfile'>
             <h1> User Profile </h1>
-            <img src={props.avatar} id="userAvatar"/>
+            <img src={props.avatar_url} id="userAvatar" alt="profile pic"/>
             <table id='userInfo'>
                 <tbody id='Ulist'>
                     <tr>
@@ -23,7 +23,7 @@ export const userInfo = (props) => {
                     </tr>
                     <tr>
                         <th>Number of Gists: </th>
-                        <td>{props.public_gists}</td>
+                        <td>{props.numOfGists}</td>
                     </tr>
                 </tbody>
             </table>
