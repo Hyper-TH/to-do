@@ -1,9 +1,7 @@
-import '../GitHub.css'; 
 import Axios from 'axios';
 import { useState } from 'react';
 
 import { UserInfo } from '../components/GitHub/UserInfo';
-
 
 export const GitHubPage = () => {
     const api_url = 'https://api.github.com/users';
