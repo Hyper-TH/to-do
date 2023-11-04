@@ -2,37 +2,105 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-size: calc(15px + 0.390625vw);
+  background-color: #98B4D4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* START MAIN CONTAINERS */
+#mainContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #d4b898;
+  height: 1000px;
+  border-radius: 15px;
+  border: 5px solid;
 }
 
-.App-link {
-  color: #61dafb;
+#mainContainer h1 {
+  font-size: calc(16px + 2vw);
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#userProfile {
+  height: auto;
+  flex: 1;
+}
+
+#userProfile img {
+  margin-left: 10%;
+  max-width: 80%;
+  height: auto;   
+  border-radius: 50%;
+}
+
+#userRepos {
+  height: auto;
+  display: none;
+  flex: 1;
+}
+/* END MAIN CONTAINERS */
+
+
+/* START SEARCH BAR */
+.searchBar {
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.searchBar input {
+  width: 80%;
+  height: 30px;
+  border-radius:10px;
+}
+
+.searchBar button {
+  border-radius:10px;
+}
+/* END SEARCH BAR */
+
+
+table {
+  background-color: white;
+  text-align: left;
+  /* border-collapse: collapse; */ /* This will not work for rounded corners*/
+  border-spacing: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+/* Apply a border to the right of all but the last column */
+table th:not(:last-child),
+table td:not(:last-child) {
+  border-right: 1px solid black;
+}
+
+/* Apply a border to the bottom of all but the last row */
+table > thead>tr:not(:last-child)>th,
+table > thead>tr:not(:last-child)>td,
+table >tbody>tr:not(:last-child)>th,
+table >tbody>tr:not(:last-child)>td,
+table >tfoot>tr:not(:last-child)>th,
+table >tfoot>tr:not(:last-child)>td,
+table >tr:not(:last-child)>td,
+table >tr:not(:last-child)>th,
+table >thead:not(:last-child),
+table >tbody:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+}
+
+.noResults {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
 }
