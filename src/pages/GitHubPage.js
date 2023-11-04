@@ -1,34 +1,46 @@
 import '../GitHub.css'; 
 import Axios from 'axios';
+import { useState } from 'react';
 
-import { findUser } from '../components/GitHub/findUser';
-import { userInfo } from '../components/GitHub/userInfo';
+import { UserInfo } from '../components/GitHub/UserInfo';
+
 
 export const GitHubPage = () => {
     const api_url = 'https://api.github.com/users';
 
-    // TODO: Use useState to store API responses
-    
-    async function findUser(event) {
-        const userData = await Axios.get(`${api_url}/${event.target.value}`);
-        return userData;
+    const [newName, setNewName] = useState("");
+    const [loginInfo, setLoginInfo] = useState({});
+
+    const findUser = () => {
+        Axios.get(`${api_url}/${newName}`)
+            .then((res) => {
+                setLoginInfo(res.data);
+            }
+        );
     }; 
 
     return (
         <>
         <div className='searchBar'>
-            <input placeholder='Username' id='username' />
+            <input 
+                placeholder='Username' 
+                id='username' 
+                type='text' 
+                onChange={(event) => {
+                    setNewName(event.target.value);
+                }}/>
+
             <button onClick={findUser}> Search </button>
         </div>
         
         <div id='MainContainer'>
-            <userInfo
-                avatar={userData?.avatar_url}
-                name={userData?.name}
-                userEmail={userDat?.email}
-                userName={userData?.login}
-                location={userData?.location}
-                numOfGists={userData?.public_gists}
+            <UserInfo
+                avatar={loginInfo?.avatar_url}
+                name={loginInfo?.name}
+                userEmail={loginInfo?.email}
+                userName={loginInfo?.login}
+                location={loginInfo?.location}
+                numOfGists={loginInfo?.public_gists}
             />
 
         </div>
