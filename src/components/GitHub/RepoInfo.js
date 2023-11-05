@@ -1,4 +1,4 @@
-export const UserInfo = (props) => {
+export const RepoInfo = (props) => {
     return <>    
       <div id='userRepos'>
             <h1> User Repos </h1>
