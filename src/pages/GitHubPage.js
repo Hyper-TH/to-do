@@ -2,12 +2,14 @@ import Axios from 'axios';
 import { useState } from 'react';
 
 import { UserInfo } from '../components/GitHub/UserInfo';
+import { RepoInfo } from '../components/GitHub/RepoInfo';
 
 export const GitHubPage = () => {
     const api_url = 'https://api.github.com/users';
 
     const [newName, setNewName] = useState("");
     const [loginInfo, setLoginInfo] = useState({});
+    const [repoInfo, setRepoInfo] = useState([]);
 
     const findUser = () => {
         Axios.get(`${api_url}/${newName}`)
@@ -15,7 +17,13 @@ export const GitHubPage = () => {
                 setLoginInfo(res.data);
             }
         );
+
+        Axios.get(`${api_url}/${newName}/repos`)
+            .then((res) => {
+                setRepoInfo(res.data);
+            })
     }; 
+
 
     return (
         <>
@@ -41,6 +49,10 @@ export const GitHubPage = () => {
                 numOfGists={loginInfo?.public_gists}
             />
 
+            <RepoInfo
+                name={repoInfo[0]?.name}
+                description={repoInfo[0]?.description}
+            />
         </div>
         </>
     );
