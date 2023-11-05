@@ -37,7 +37,6 @@ body {
 
 #userRepos {
   height: auto;
-  display: none;
   flex: 1;
 }
 /* END MAIN CONTAINERS */
