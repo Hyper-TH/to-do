@@ -50,8 +50,7 @@ export const GitHubPage = () => {
             />
 
             <RepoInfo
-                name={repoInfo[0]?.name}
-                description={repoInfo[0]?.description}
+                repoInfo={repoInfo}
             />
         </div>
         </>
