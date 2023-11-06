@@ -1,3 +1,4 @@
+// TODO: FIX ERROR REGARDING MAPS
 export const RepoInfo = (props) => {
     return <>    
       <div id='userRepos'>
@@ -5,19 +6,23 @@ export const RepoInfo = (props) => {
             <div id="repoTableWrapper">
                 <table id='repoInfo'>
                     <tbody id="Rlist">
-                        <tr>
-                            <th>Name: </th>
-                            <td>{props.name}</td>
-                        </tr>
-                        <tr>
-                            <th>Description: </th>
-                            <td>{props.description}</td>
-                        </tr>
+                        {props.repoInfo.map(function(repo,i) {
+                            return (
+                            <>
+                                <tr key={i}>
+                                    <th key={i}>Name:</th>
+                                    <td key={i}>{repo.name}</td>
+                                </tr>
+                                <tr key={i}>
+                                    <th key={i}>Description:</th>
+                                    <td key={i}>{repo.description}</td>
+                                </tr>
+                            </>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
         </div>
     </>
 };
-
-
