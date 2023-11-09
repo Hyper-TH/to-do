@@ -12,7 +12,7 @@ import { TaskPage } from './pages/TaskPage';
 import { CounterPage } from './pages/CounterPage';
 import { MedicinePage } from './pages/MedicinePage';
 import { GitHubPage } from './pages/GitHubPage';
-import { ServerTest } from './pages/ServerTest'
+import { ServerTest } from './pages/ServerTest';
 
 function App() {
 
