@@ -1,6 +1,19 @@
-import express from 'express';
 import cors from 'cors';
 import Axios from 'axios';
+import express from 'express';
+import admin from 'firebase-admin';
+import { Firestore } from '@google-cloud/firestore/build/src/index.js';
+import serviceAccount from './creds.json'  assert { type: "json" };
+
+
+// Initialize Firebase Admin SDK
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: `https://crud-node-firebase-5bd75.firebaseio.com/`
+});
+
+const firestore = admin.firestore();
+
 
 // Create Express application
 const app = express();
@@ -32,6 +45,24 @@ app.get('/excuse', async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+// Route to get documents from a Firestore collection
+app.get('/getExcuses', async (req, res) => {
+    try {
+        const collectionName = 'excuses';
+
+        // Fetch all documents from the "excuses" collection
+        const querySnapshot = await firestore.collection(collectionName).get();
+
+        // Extract document data
+        const documents = querySnapshot.docs.map((doc) => doc.data());
+
+        res.json({ documents });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    };
 });
 
 // Start server
