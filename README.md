@@ -24,7 +24,7 @@ Page allows a user to input a category and generate an excuse using the [excuse 
 
 It is then stored into a Firestore database.
 
-[Page](https://github.com/Hyper-TH/to-do/blob/master/src/pages/ServerTest.js)
+[Page](https://github.com/Hyper-TH/to-do/blob/master/src/pages/ServerTest.js) <br>
 [Server](https://github.com/Hyper-TH/to-do/blob/master/server/server.js)
 
 ### ExcusesPage
