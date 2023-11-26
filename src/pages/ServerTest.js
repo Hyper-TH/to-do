@@ -16,13 +16,21 @@ export const ServerTest = () => {
             const response = await Axios.get(`http://localhost:8000/excuse?category=${encodeURIComponent(category)}`);
     
             console.log(response);
-            if (response) {
+
+            if (response && response.data[0].excuse) {
                 setExcuse(response.data[0].excuse);
                 setError("");
+
+                await Axios.post('http://localhost:8000/putExcuse', {
+                    excuse: response.data[0].excuse,
+                    category: response.data[0].category
+                });
+
             } else {
                 setExcuse("");
                 setError("Error retrieving excuse");
             }
+
         } catch (error) {
             console.error(`Error: ${error}`);
             setExcuse("");

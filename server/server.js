@@ -65,6 +65,30 @@ app.get('/getExcuses', async (req, res) => {
     };
 });
 
+// Route to push documents to a Firestore collection
+app.post('/putExcuse', async (req, res) => {
+    try {
+        const { excuse, category } = req.body;
+
+        if(!excuse) {
+            return res.status(400).json({ error: 'Excuse is required' });
+        }
+
+        const collectionName = 'excuses';
+
+        // Add the excuse to the "excuses" collection in Firestore
+        await firestore.collection(collectionName).add({
+            category,
+            excuse
+        });
+
+        res.json({ message: 'Excuse added to Firestore succcessfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error '});
+    }
+})
+
 // Start server
 app.listen(8000, () => {
     console.log(`Server is running on port 8000.`);
