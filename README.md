@@ -1,6 +1,6 @@
 # Hyper's React App Playground
 
-This project contains a simple React App that demonstrates several functionalities.
+This project contains a simple React App that demonstrates several functionalities through different pages.
 
 This is also the foundation of my self-learning for ReactJS. I started learning ReactJS by following a [ReactJS Tutorial](https://www.youtube.com/watch?v=f55qeKGgB_M) and my progress can be found [here] (https://github.com/Hyper-TH/react-app).
 
